@@ -5,7 +5,7 @@ function Logo() {
     <div className="main-nav-logo">
       <img
         className="main-nav-logo-image"
-        src="./assets/argentBankLogo.png"
+        src="./assets/argentBankLogo.webp"
         alt="Logo ArgentBank"
       />
       <h1 className="sr-only">Argent Bank</h1>

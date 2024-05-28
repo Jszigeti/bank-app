@@ -8,7 +8,7 @@ import {
 import "./Menu.style.css";
 
 function Menu() {
-  const token = false;
+  const token = true;
 
   return (
     <nav className="main-nav">

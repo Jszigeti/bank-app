@@ -1,4 +1,4 @@
-import UserEdit from "../../features/UserEdit/UserEdit";
+import UserEdit from "../UserEdit/UserEdit";
 import { accounts } from "../../data/data";
 import Account from "../../components/Account/Account";
 
