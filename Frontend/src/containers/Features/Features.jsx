@@ -1,5 +1,5 @@
 import "./Features.style.css";
-import { features } from "../../data/features";
+import { features } from "../../data/data";
 import FeatureItem from "../../components/FeatureItem/FeatureItem";
 
 function Features() {

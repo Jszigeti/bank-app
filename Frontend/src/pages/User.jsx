@@ -1,15 +1,15 @@
 import Footer from "../components/Footer/Footer";
-import Form from "../containers/Form/Form";
+import Accounts from "../containers/Accounts/Accounts";
 import Menu from "../containers/Menu/Menu";
 
-function SignIn() {
+function User() {
   return (
     <>
       <Menu />
-      <Form />
+      <Accounts />
       <Footer />
     </>
   );
 }
 
-export default SignIn;
+export default User;
