@@ -1,0 +1,9 @@
+{
+  "name": "argent-bank-app",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "cd ./Frontend/ && npm start",
+    "dev:server": "cd ./Backend/ && npm run dev:server",
+    "populate-db": "cd ./Backend/ && npm run populate-db"
+  }
+}

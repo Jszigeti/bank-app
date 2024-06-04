@@ -4,9 +4,9 @@ import Account from "../../components/Account/Account";
 
 function Accounts() {
   return (
-    <main class="main bg-dark">
+    <main className="main bg-dark">
       <UserEdit />
-      <h2 class="sr-only">Accounts</h2>
+      <h2 className="sr-only">Accounts</h2>
       {accounts.map((account) => (
         <Account key={Math.random()} account={account} />
       ))}

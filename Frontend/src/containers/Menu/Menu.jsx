@@ -6,9 +6,13 @@ import {
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Menu.style.css";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../actions/user.actions";
 
 function Menu() {
-  const token = true;
+  // Retrieving the token and user data from the store
+  const { token, userData } = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
 
   return (
     <nav className="main-nav">
@@ -16,6 +20,7 @@ function Menu() {
         <Logo />
       </NavLink>
       <div className="main-nav-item">
+        {/* Conditions the rendering of the menu */}
         {!token ? (
           <NavLink className="main-nav-item" to="/sign-in">
             <FontAwesomeIcon icon={faCircleUser} />
@@ -23,11 +28,15 @@ function Menu() {
           </NavLink>
         ) : (
           <>
-            <NavLink className="main-nav-item" to="/user">
+            <NavLink className="main-nav-item" to="/profile">
               <FontAwesomeIcon icon={faCircleUser} />
-              <span> userId</span>
+              <span> {userData.firstName}</span>
             </NavLink>
-            <NavLink className="main-nav-item" to="/">
+            <NavLink
+              className="main-nav-item"
+              to="/"
+              onClick={() => dispatch(logout())}
+            >
               <FontAwesomeIcon icon={faRightFromBracket} />
               <span> Sign out</span>
             </NavLink>

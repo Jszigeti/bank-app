@@ -1,8 +1,8 @@
-import ReactRouter from "./utils/ReactRouter";
+import AppRouter from "./routes/AppRouter";
 import "./css/main.css";
 
 function App() {
-  return <ReactRouter />;
+  return <AppRouter />;
 }
 
 export default App;

@@ -2,7 +2,7 @@ import Footer from "../components/Footer/Footer";
 import Accounts from "../containers/Accounts/Accounts";
 import Menu from "../containers/Menu/Menu";
 
-function User() {
+function Profile() {
   return (
     <>
       <Menu />
@@ -12,4 +12,4 @@ function User() {
   );
 }
 
-export default User;
+export default Profile;

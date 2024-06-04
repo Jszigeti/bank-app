@@ -1,5 +1,5 @@
 import Footer from "../components/Footer/Footer";
-import Form from "../containers/Form/Form";
+import Form from "../components/Form/Form";
 import Menu from "../containers/Menu/Menu";
 
 function SignIn() {

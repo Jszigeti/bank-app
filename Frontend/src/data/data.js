@@ -20,7 +20,12 @@ export const features = [
 ];
 
 export const formInputs = [
-  { class: "input-wrapper", id: "username", label: "Username", type: "text" },
+  {
+    class: "input-wrapper",
+    id: "email",
+    label: "Username",
+    type: "text",
+  },
   {
     class: "input-wrapper",
     id: "password",
