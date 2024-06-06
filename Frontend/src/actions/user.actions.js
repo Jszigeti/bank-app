@@ -4,6 +4,8 @@ export const RETRIEVE_TOKEN_SUCCESS = "RETRIEVE_TOKEN_SUCCESS";
 export const RETRIEVE_TOKEN_FAILURE = "RETRIEVE_TOKEN_FAILURE";
 export const LOGOUT = "LOGOUT";
 export const GET_USER_DATA = "GET_USER_DATA";
+export const EDIT_USER_NAME = "EDIT_USER_NAME";
+export const EDIT_MODE = "EDIT_MODE";
 
 // Get the token by sending ids to the API then retrieve user data
 export const login = (ids, rm) => {
@@ -12,10 +14,6 @@ export const login = (ids, rm) => {
       return await axios
         .post("http://localhost:3001/api/v1/user/login", ids)
         .then((res) => {
-          // If remember-me is checked, the token is stored in sessionStorage
-          if (rm) {
-            sessionStorage.setItem("token", res.data.body.token);
-          }
           // Get user data
           dispatch(getUserData(res.data.body.token));
           // Dispatch the token to the store
@@ -36,9 +34,6 @@ export const login = (ids, rm) => {
 
 // Logout fonction
 export const logout = () => {
-  if (sessionStorage.getItem("token")) {
-    sessionStorage.removeItem("token");
-  }
   return {
     type: "LOGOUT",
   };
@@ -61,5 +56,26 @@ export const getUserData = (token) => {
         // Dispatch user data to the store
         dispatch({ type: GET_USER_DATA, payload: res.data.body });
       });
+  };
+};
+
+// Edit username by sending the token and new username to the API
+export const editUserName = (username, token) => {
+  return (dispatch) => {
+    axios
+      .put("http://localhost:3001/api/v1/user/profile", username, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        dispatch({ type: EDIT_USER_NAME, payload: res.data.body });
+      });
+  };
+};
+
+export const editMode = (editState) => {
+  return (dispatch) => {
+    dispatch({ type: EDIT_MODE, payload: editState });
   };
 };

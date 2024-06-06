@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
 import "./Account.style.css";
 
 function Account({ account }) {
+  const { editMode } = useSelector((state) => state.userReducer);
+
   return (
-    <section className="account">
+    <section className={`account ${editMode ? "account-edit" : ""}`}>
       <div className="account-content-wrapper">
         <h3 className="account-title">{account.title}</h3>
         <p className="account-amount">{account.amount}</p>

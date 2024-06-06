@@ -1,28 +1,38 @@
 import { useState } from "react";
 import "./UserEdit.style.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { editMode, editUserName } from "../../actions/user.actions";
 
 function UserEdit() {
+  const dispatch = useDispatch();
   // Retrieving user data from the store
-  const { userData } = useSelector((state) => state.userReducer);
+  const { userData, token } = useSelector((state) => state.userReducer);
   // State creation to rendering edit form
   const [editToggle, setEditToggle] = useState(false);
   // State creation to control the form
-  const [username, setUsername] = useState(userData.userName);
+  const [userName, setUserName] = useState("");
 
   // Toggle the state editToggle
   const handleToggle = (e) => {
     e.preventDefault();
-    setEditToggle(!editToggle);
+    setUserName(userData.userName);
+    setEditToggle((editToggle) => !editToggle);
+    dispatch(editMode(!editToggle));
   };
 
   // Sending username when submitting the form
   const handleUsernameEdit = (e) => {
     e.preventDefault();
+    const username = {
+      userName: userName,
+    };
+    dispatch(editUserName(username, token));
+    setEditToggle((editToggle) => !editToggle);
+    dispatch(editMode(!editToggle));
   };
 
   return (
-    <div className="header">
+    <div className={`header ${editToggle ? "header-edit" : ""}`}>
       {/* Conditions the rendering of the edit form */}
       {!editToggle ? (
         <>
@@ -44,8 +54,8 @@ function UserEdit() {
               <input
                 type="text"
                 id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
               />
             </div>
             <div>
@@ -69,6 +79,7 @@ function UserEdit() {
             <div>
               <button
                 className="edit-button"
+                type="submit"
                 onClick={(e) => handleUsernameEdit(e)}
               >
                 Save

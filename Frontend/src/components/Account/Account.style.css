@@ -13,6 +13,11 @@
   margin-bottom: 2rem;
 }
 
+.account-edit {
+  background-color: #12002b;
+  color: #fff;
+}
+
 .account-amount {
   margin: 0;
   font-size: 2.5rem;

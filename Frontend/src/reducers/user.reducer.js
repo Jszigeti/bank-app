@@ -3,12 +3,15 @@ import {
   RETRIEVE_TOKEN_FAILURE,
   LOGOUT,
   GET_USER_DATA,
+  EDIT_USER_NAME,
+  EDIT_MODE,
 } from "../actions/user.actions";
 
 const initialState = {
   token: null,
   error: null,
   userData: {},
+  editMode: false,
 };
 
 export default function userReducer(state = initialState, action) {
@@ -21,6 +24,10 @@ export default function userReducer(state = initialState, action) {
       return { ...state, token: null };
     case GET_USER_DATA:
       return { ...state, userData: action.payload };
+    case EDIT_USER_NAME:
+      return { ...state, userData: action.payload };
+    case EDIT_MODE:
+      return { ...state, editMode: action.payload };
     default:
       return state;
   }

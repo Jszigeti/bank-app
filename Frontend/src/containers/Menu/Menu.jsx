@@ -30,7 +30,7 @@ function Menu() {
           <>
             <NavLink className="main-nav-item" to="/profile">
               <FontAwesomeIcon icon={faCircleUser} />
-              <span> {userData.firstName}</span>
+              <span> {userData.userName}</span>
             </NavLink>
             <NavLink
               className="main-nav-item"
