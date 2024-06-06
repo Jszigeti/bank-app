@@ -8,7 +8,7 @@ export const EDIT_USER_NAME = "EDIT_USER_NAME";
 export const EDIT_MODE = "EDIT_MODE";
 
 // Get the token by sending ids to the API then retrieve user data
-export const login = (ids, rm) => {
+export const login = (ids) => {
   return async (dispatch) => {
     try {
       return await axios
@@ -32,15 +32,8 @@ export const login = (ids, rm) => {
   };
 };
 
-// Logout fonction
-export const logout = () => {
-  return {
-    type: "LOGOUT",
-  };
-};
-
 // Get user data by sending the token to the API
-export const getUserData = (token) => {
+const getUserData = (token) => {
   return (dispatch) => {
     axios
       .post(
@@ -59,6 +52,13 @@ export const getUserData = (token) => {
   };
 };
 
+// Logout fonction
+export const logout = () => {
+  return {
+    type: "LOGOUT",
+  };
+};
+
 // Edit username by sending the token and new username to the API
 export const editUserName = (username, token) => {
   return (dispatch) => {
@@ -74,6 +74,7 @@ export const editUserName = (username, token) => {
   };
 };
 
+// Propagate the editMode state
 export const editMode = (editState) => {
   return (dispatch) => {
     dispatch({ type: EDIT_MODE, payload: editState });

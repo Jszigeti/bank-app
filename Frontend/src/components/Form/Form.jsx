@@ -23,9 +23,7 @@ function Form() {
       password: password,
     };
 
-    const rm = rememberMe;
-
-    dispatch(login(ids, rm));
+    dispatch(login(ids));
   };
 
   return (
