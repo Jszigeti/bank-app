@@ -7,11 +7,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./Menu.style.css";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../actions/user.actions";
+import { logout } from "../../slices/userSlice";
 
 function Menu() {
   // Retrieving the token and user data from the store
-  const { token, userData } = useSelector((state) => state.userReducer);
+  const { token, userData } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   return (

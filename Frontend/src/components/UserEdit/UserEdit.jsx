@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./UserEdit.style.css";
 import { useDispatch, useSelector } from "react-redux";
-import { editMode, editUserName } from "../../actions/user.actions";
+import { editMode, editUserName } from "../../slices/userSlice";
 
 function UserEdit() {
   const dispatch = useDispatch();
   // Retrieving user data from the store
-  const { userData, token } = useSelector((state) => state.userReducer);
+  const { token, userData } = useSelector((state) => state.user);
   // State creation to rendering edit form
   const [editToggle, setEditToggle] = useState(false);
   // State creation to control the form
@@ -26,8 +26,12 @@ function UserEdit() {
     const username = {
       userName: userName,
     };
-    dispatch(editUserName(username, token));
+    dispatch(editUserName({ username, token }));
+
+    // Toggle the state editToggle
     setEditToggle((editToggle) => !editToggle);
+
+    // Send EditMode state to the store
     dispatch(editMode(!editToggle));
   };
 

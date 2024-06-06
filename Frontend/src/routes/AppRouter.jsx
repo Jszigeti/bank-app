@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import SignIn from "../pages/SignIn";
 import Profile from "../pages/Profile";
@@ -12,7 +7,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 function AppRouter() {
   // Retrieve the token from the store
-  const { token } = useSelector((state) => state.userReducer);
+  const { token } = useSelector((state) => state.user);
 
   return (
     <Router>
@@ -22,18 +17,21 @@ function AppRouter() {
           path="/sign-in"
           element={
             // Block access to the SignIn page if the user is logged in
-            !token ? <SignIn /> : <Navigate to="/profile" replace />
+            <ProtectedRoute token={!token} redirectPath="/profile">
+              <SignIn />
+            </ProtectedRoute>
           }
         />
         <Route
           path="/profile"
           element={
             // Protecting access to the Profile page
-            <ProtectedRoute redirectPath="/sign-in">
+            <ProtectedRoute token={token} redirectPath="/sign-in">
               <Profile />
             </ProtectedRoute>
           }
         />
+        {/* Redirect to home */}
         <Route path="*" element={<Home />} />
       </Routes>
     </Router>

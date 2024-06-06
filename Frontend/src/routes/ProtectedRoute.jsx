@@ -1,10 +1,7 @@
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ redirectPath, children }) => {
-  // Retrieve the token from the store
-  const { token } = useSelector((state) => state.userReducer);
-
+const ProtectedRoute = ({ token, redirectPath, children }) => {
   //Redirect the user if there is no token
   if (!token) {
     return <Navigate to={redirectPath} replace />;

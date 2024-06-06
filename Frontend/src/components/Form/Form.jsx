@@ -3,12 +3,12 @@ import "./Form.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../actions/user.actions";
+import { login } from "../../slices/userSlice";
 
 function Form() {
   const dispatch = useDispatch();
-  // Retrieving the error from the store
-  const { error } = useSelector((state) => state.userReducer);
+  // Retrieve the status of the API call
+  const { status } = useSelector((state) => state.user);
   // States creation to control the form
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +17,9 @@ function Form() {
   // Sending ids and RM when submitting the form
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Store the state of the remember me box in the localStorage
+    localStorage.setItem("rememberMe", rememberMe);
 
     const ids = {
       email: username,
@@ -61,7 +64,8 @@ function Form() {
           </div>
           <button type="submit">Sign In</button>
         </form>
-        {error && <p>Erreur: {error}</p>}
+        {/* Display an error message if the call failed */}
+        {status === "failed" && <p>Incorrect username or password.</p>}
       </section>
     </main>
   );
