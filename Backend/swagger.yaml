@@ -267,15 +267,16 @@ definitions:
               description: transaction id
             date:
               type: string
+              format: date-time
               description: transaction date
             description:
               type: string
               description: transaction description
             amount:
-              type: string
+              type: number
               description: transaction amount
             balance:
-              type: string
+              type: number
               description: account balance
   TransactionDetails:
     type: object
@@ -283,6 +284,14 @@ definitions:
       category:
         type: string
         description: transaction category
+        enum:
+          - food
+          - entertainment
+          - rent
+          - credit
+          - vehicle
+          - transportation
+          - care
       note:
         type: string
         description: transaction note
@@ -298,7 +307,18 @@ definitions:
         properties:
           type:
             type: string
+            description: transaction type
           category:
             type: string
+            description: transaction category
+            enum:
+              - food
+              - entertainment
+              - rent
+              - credit
+              - vehicle
+              - transportation
+              - care
           note:
             type: string
+            description: transaction note
