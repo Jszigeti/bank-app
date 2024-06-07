@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../slices/userSlice";
+import { reconfigurePersistor } from "../../store/store";
 
 function Form() {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ function Form() {
 
     // Store the state of the remember me box in the localStorage
     localStorage.setItem("rememberMe", rememberMe);
+
+    // Reconfigure the persistor based on rememberMe state
+    reconfigurePersistor(rememberMe);
 
     const ids = {
       email: username,
