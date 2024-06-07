@@ -35,7 +35,7 @@ mongosh --version
 1. Run the following commands:
 
 ```bash
-# Install all dependencies for frontend and backend (open a terminal in the project folder)
+# Install all dependencies for frontend and backend
 npm i
 
 # Start local dev server
@@ -44,34 +44,36 @@ npm run dev:server
 # Populate database with two users
 npm run populate-db
 
-# Launch the app (it must be done in a second terminal)
+# Launch the app (⚠️ launch the frontend in a second terminal)
 npm start
 ```
 
 Your server should now be running at http://locahost:3001 and you will now have two users in your MongoDB database!
 
-## Populated Database Data
+### Access the app
+
+Once you have started the app, open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+## Informations
+
+### Populated Database Data
 
 Once you run the `populate-db` script, you should have two users in your database:
 
-### Tony Stark
+#### Tony Stark
 
 - First Name: `Tony`
 - Last Name: `Stark`
 - Email: `tony@stark.com`
 - Password: `password123`
 
-### Steve Rogers
+#### Steve Rogers
 
 - First Name: `Steve`,
 - Last Name: `Rogers`,
 - Email: `steve@rogers.com`,
 - Password: `password456`
 
-## API Documentation
+### Acces the API Documentation
 
 To learn more about how the API works, once you have started your local environment, you can visit: http://localhost:3001/api-docs
-
-## Access the app
-
-### Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
