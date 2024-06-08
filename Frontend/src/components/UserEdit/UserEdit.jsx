@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./UserEdit.style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { editMode, editUserName } from "../../slices/userSlice";
+import Button from "../Button/Button";
 
 function UserEdit() {
   const dispatch = useDispatch();
@@ -45,9 +46,11 @@ function UserEdit() {
             <br />
             {userData.firstName} "{userData.userName}" {userData.lastName}!
           </h1>
-          <button className="edit-button" onClick={(e) => handleToggle(e)}>
-            Edit Name
-          </button>
+          <Button
+            content={"Edit Name"}
+            className={"edit-button"}
+            onClick={(e) => handleToggle(e)}
+          />
         </>
       ) : (
         <>
@@ -81,16 +84,17 @@ function UserEdit() {
               />
             </div>
             <div>
-              <button
-                className="edit-button"
-                type="submit"
+              <Button
+                content={"Save"}
+                className={"edit-button"}
+                type={"submit"}
                 onClick={(e) => handleUsernameEdit(e)}
-              >
-                Save
-              </button>
-              <button className="edit-button" onClick={(e) => handleToggle(e)}>
-                Cancel
-              </button>
+              />
+              <Button
+                content={"Cancel"}
+                className={"edit-button"}
+                onClick={(e) => handleToggle(e)}
+              />
             </div>
           </form>
         </>

@@ -5,6 +5,7 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../slices/userSlice";
 import { reconfigurePersistor } from "../../store/store";
+import Button from "../Button/Button";
 
 function Form() {
   const dispatch = useDispatch();
@@ -66,7 +67,11 @@ function Form() {
             />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <button type="submit">Sign In</button>
+          <Button
+            content={"Sign In"}
+            className={"edit-button"}
+            type={"submit"}
+          />
         </form>
         {/* Display an error message if the call failed */}
         {status === "failed" && <p>Incorrect username or password.</p>}

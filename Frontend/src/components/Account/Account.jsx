@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import "./Account.style.css";
+import Button from "../Button/Button";
 
 function Account({ account }) {
   // Retrieve the state of editMode to modify CSS
@@ -14,7 +15,10 @@ function Account({ account }) {
         <p className="account-amount-description">{account.description}</p>
       </div>
       <div className="account-content-wrapper cta">
-        <button className="transaction-button">View transactions</button>
+        <Button
+          content={"View transactions"}
+          className={"transaction-button"}
+        />
       </div>
     </section>
   );
