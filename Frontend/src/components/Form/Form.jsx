@@ -69,7 +69,7 @@ function Form() {
           </div>
           <Button
             content={"Sign In"}
-            className={"edit-button"}
+            className={"sign-in-button"}
             type={"submit"}
           />
         </form>
