@@ -1,4 +1,4 @@
-# PROJECT 11 - ARGENT BANK
+# Argent Bank
 
 Banking application created with React, Redux and MongoDB
 
